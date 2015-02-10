@@ -13,7 +13,7 @@ typedef void(^CMBALTextViewLinkHandler)(NSURL *link, NSRange characterRange);
 
 @property (nonatomic, readwrite, assign)  IBInspectable BOOL displayFitContents;
 @property (nonatomic)  IBInspectable CGFloat displayWidth;
-@property (nonatomic, readwrite, assign) IBInspectable CGFloat maxHeight;
+@property (nonatomic, readwrite, assign) IBInspectable CGFloat maxDisplayHeight;
 
 - (void)setLinkHandler:(CMBALTextViewLinkHandler)linkHandler;
 

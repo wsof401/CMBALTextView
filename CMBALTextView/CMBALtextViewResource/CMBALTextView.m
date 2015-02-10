@@ -52,7 +52,8 @@
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.displayWidth = CGFLOAT_MAX;
     self.displayFitContents = YES;
-    self.maxHeight = CGFLOAT_MAX;
+    self.maxDisplayHeight = CGFLOAT_MAX;
+
     
 }
 
@@ -75,17 +76,18 @@
 - (CGSize)intrinsicContentSize{
     CGSize expectSize = [super intrinsicContentSize];
     if (self.displayFitContents ) {
-        expectSize = self.contentSize;
+        CGFloat displayWidth = CGRectGetWidth(self.bounds);
         if (self.displayWidth != CGFLOAT_MAX ) {
-            expectSize = [self sizeThatFits:CGSizeMake(self.displayWidth, CGFLOAT_MAX)];
-            if (self.maxHeight != CGFLOAT_MAX) {
-                expectSize.height = self.maxHeight;
-            }
-            
+            displayWidth = self.displayWidth;
+        }
+        expectSize = [self sizeThatFits:CGSizeMake(displayWidth, CGFLOAT_MAX)];
+        if (_maxDisplayHeight != CGFLOAT_MAX) {
+            expectSize.height = _maxDisplayHeight;
         }
     }
     return expectSize;
 }
+
 
 #pragma mark - Custom Associate
 
@@ -94,6 +96,8 @@
     _displayFitContents = displayFitContents;
     self.scrollEnabled = !displayFitContents;
 }
+
+
 
 
 @end
