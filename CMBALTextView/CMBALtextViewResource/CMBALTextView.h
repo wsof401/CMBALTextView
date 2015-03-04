@@ -17,4 +17,6 @@ typedef void(^CMBALTextViewLinkHandler)(NSURL *link, NSRange characterRange);
 
 - (void)setLinkHandler:(CMBALTextViewLinkHandler)linkHandler;
 
+- (void)loadAtAttrWithSource:(NSString *)source;
+
 @end
